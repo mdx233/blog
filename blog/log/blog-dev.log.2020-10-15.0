@@ -1,0 +1,100 @@
+2020-10-15 11:40:34.487  INFO 11952 --- [restartedMain] com.mdx.blog.BlogApplication             : Starting BlogApplication on LAPTOP-DFC8M61K with PID 11952 (C:\Users\mdx\Desktop\blogProject\blogBack\target\classes started by mdx in C:\Users\mdx\Desktop\blogProject\blogBack)
+2020-10-15 11:40:34.609 DEBUG 11952 --- [restartedMain] com.mdx.blog.BlogApplication             : Running with Spring Boot v2.2.5.RELEASE, Spring v5.2.4.RELEASE
+2020-10-15 11:40:34.610  INFO 11952 --- [restartedMain] com.mdx.blog.BlogApplication             : The following profiles are active: dev
+2020-10-15 11:40:35.320  INFO 11952 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-10-15 11:40:35.321  INFO 11952 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-10-15 11:40:43.271  INFO 11952 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-10-15 11:40:43.504  INFO 11952 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-10-15 11:40:43.506  INFO 11952 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-10-15 11:40:43.558  INFO 11952 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.14] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-10-15 11:40:43.559  INFO 11952 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.14] using APR version [1.6.2].
+2020-10-15 11:40:43.559  INFO 11952 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-10-15 11:40:43.559  INFO 11952 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-10-15 11:40:44.676  INFO 11952 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2l  25 May 2017]
+2020-10-15 11:40:44.966  INFO 11952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-10-15 11:40:44.967  INFO 11952 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 9645 ms
+2020-10-15 11:40:48.252  INFO 11952 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-15 11:40:48.714  INFO 11952 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-10-15 11:40:50.722  INFO 11952 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-10-15 11:40:50.809  INFO 11952 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-10-15 11:40:50.819  INFO 11952 --- [restartedMain] com.mdx.blog.BlogApplication             : Started BlogApplication in 25.16 seconds (JVM running for 33.789)
+2020-10-15 11:41:02.140  INFO 11952 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-15 11:41:02.140  INFO 11952 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-10-15 11:41:02.150  INFO 11952 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-10-15 11:41:09.972  INFO 11952 --- [http-nio-8080-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-15 11:41:10.299  INFO 11952 --- [http-nio-8080-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-15 11:41:10.317 DEBUG 11952 --- [http-nio-8080-exec-6] c.m.b.d.U.findByUsernameAndPassword      : ==>  Preparing: select * from t_user where username = ? and password = ?; 
+2020-10-15 11:41:10.454 DEBUG 11952 --- [http-nio-8080-exec-6] c.m.b.d.U.findByUsernameAndPassword      : ==> Parameters: mdx(String), e10adc3949ba59abbe56e057f20f883e(String)
+2020-10-15 11:41:10.583 DEBUG 11952 --- [http-nio-8080-exec-6] c.m.b.d.U.findByUsernameAndPassword      : <==      Total: 1
+2020-10-15 11:41:18.171 DEBUG 11952 --- [http-nio-8080-exec-10] c.m.b.dao.BlogDao.getAllBlogQuery_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b LEFT OUTER JOIN t_type t ON b.type_id = t.id 
+2020-10-15 11:41:18.172 DEBUG 11952 --- [http-nio-8080-exec-10] c.m.b.dao.BlogDao.getAllBlogQuery_COUNT  : ==> Parameters: 
+2020-10-15 11:41:18.174 DEBUG 11952 --- [http-nio-8080-exec-10] c.m.b.dao.BlogDao.getAllBlogQuery_COUNT  : <==      Total: 1
+2020-10-15 11:41:18.176 DEBUG 11952 --- [http-nio-8080-exec-10] c.mdx.blog.dao.BlogDao.getAllBlogQuery   : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.type_id,b.published,t.id,t.name from t_blog b left outer join t_type t on b.type_id = t.id order by b.update_time desc LIMIT ? 
+2020-10-15 11:41:18.177 DEBUG 11952 --- [http-nio-8080-exec-10] c.mdx.blog.dao.BlogDao.getAllBlogQuery   : ==> Parameters: 3(Integer)
+2020-10-15 11:41:18.179 DEBUG 11952 --- [http-nio-8080-exec-10] c.mdx.blog.dao.BlogDao.getAllBlogQuery   : <==      Total: 3
+2020-10-15 11:41:18.186 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TypeDao.getAllType      : ==>  Preparing: select * from t_type 
+2020-10-15 11:41:18.187 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TypeDao.getAllType      : ==> Parameters: 
+2020-10-15 11:41:18.189 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TypeDao.getAllType      : <==      Total: 6
+2020-10-15 11:41:18.190 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TagDao.getAllTag        : ==>  Preparing: select * from t_tag 
+2020-10-15 11:41:18.191 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TagDao.getAllTag        : ==> Parameters: 
+2020-10-15 11:41:18.194 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TagDao.getAllTag        : <==      Total: 4
+2020-10-15 11:41:39.795 DEBUG 11952 --- [http-nio-8080-exec-4] c.m.b.dao.BlogDao.getAllBlogQuery_COUNT  : ==>  Preparing: SELECT count(0) FROM t_blog b LEFT OUTER JOIN t_type t ON b.type_id = t.id 
+2020-10-15 11:41:39.795 DEBUG 11952 --- [http-nio-8080-exec-4] c.m.b.dao.BlogDao.getAllBlogQuery_COUNT  : ==> Parameters: 
+2020-10-15 11:41:39.796 DEBUG 11952 --- [http-nio-8080-exec-4] c.m.b.dao.BlogDao.getAllBlogQuery_COUNT  : <==      Total: 1
+2020-10-15 11:41:39.796 DEBUG 11952 --- [http-nio-8080-exec-4] c.mdx.blog.dao.BlogDao.getAllBlogQuery   : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.type_id,b.published,t.id,t.name from t_blog b left outer join t_type t on b.type_id = t.id order by b.update_time desc LIMIT ?, ? 
+2020-10-15 11:41:39.796 DEBUG 11952 --- [http-nio-8080-exec-4] c.mdx.blog.dao.BlogDao.getAllBlogQuery   : ==> Parameters: 3(Integer), 3(Integer)
+2020-10-15 11:41:39.798 DEBUG 11952 --- [http-nio-8080-exec-4] c.mdx.blog.dao.BlogDao.getAllBlogQuery   : <==      Total: 2
+2020-10-15 11:41:39.798 DEBUG 11952 --- [http-nio-8080-exec-4] com.mdx.blog.dao.TypeDao.getAllType      : ==>  Preparing: select * from t_type 
+2020-10-15 11:41:39.798 DEBUG 11952 --- [http-nio-8080-exec-4] com.mdx.blog.dao.TypeDao.getAllType      : ==> Parameters: 
+2020-10-15 11:41:39.800 DEBUG 11952 --- [http-nio-8080-exec-4] com.mdx.blog.dao.TypeDao.getAllType      : <==      Total: 6
+2020-10-15 11:41:39.800 DEBUG 11952 --- [http-nio-8080-exec-4] com.mdx.blog.dao.TagDao.getAllTag        : ==>  Preparing: select * from t_tag 
+2020-10-15 11:41:39.800 DEBUG 11952 --- [http-nio-8080-exec-4] com.mdx.blog.dao.TagDao.getAllTag        : ==> Parameters: 
+2020-10-15 11:41:39.801 DEBUG 11952 --- [http-nio-8080-exec-4] com.mdx.blog.dao.TagDao.getAllTag        : <==      Total: 4
+2020-10-15 11:42:10.491 DEBUG 11952 --- [http-nio-8080-exec-8] d.B.searchByTitleOrTypeOrRecommend_COUNT : ==>  Preparing: SELECT count(0) FROM t_blog b JOIN t_type t ON b.type_id = t.id WHERE b.type_id = ? AND b.title LIKE ? 
+2020-10-15 11:42:10.492 DEBUG 11952 --- [http-nio-8080-exec-8] d.B.searchByTitleOrTypeOrRecommend_COUNT : ==> Parameters: 3(Long), %%(String)
+2020-10-15 11:42:10.493 DEBUG 11952 --- [http-nio-8080-exec-8] d.B.searchByTitleOrTypeOrRecommend_COUNT : <==      Total: 1
+2020-10-15 11:42:10.493 DEBUG 11952 --- [http-nio-8080-exec-8] c.m.b.d.B.searchByTitleOrTypeOrRecommend : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.type_id,t.id,t.name from t_blog b join t_type t on b.type_id = t.id WHERE b.type_id = ? and b.title like ? LIMIT ? 
+2020-10-15 11:42:10.493 DEBUG 11952 --- [http-nio-8080-exec-8] c.m.b.d.B.searchByTitleOrTypeOrRecommend : ==> Parameters: 3(Long), %%(String), 6(Integer)
+2020-10-15 11:42:10.494 DEBUG 11952 --- [http-nio-8080-exec-8] c.m.b.d.B.searchByTitleOrTypeOrRecommend : <==      Total: 2
+2020-10-15 11:42:10.495 DEBUG 11952 --- [http-nio-8080-exec-8] com.mdx.blog.dao.TypeDao.getAllType      : ==>  Preparing: select * from t_type 
+2020-10-15 11:42:10.496 DEBUG 11952 --- [http-nio-8080-exec-8] com.mdx.blog.dao.TypeDao.getAllType      : ==> Parameters: 
+2020-10-15 11:42:10.497 DEBUG 11952 --- [http-nio-8080-exec-8] com.mdx.blog.dao.TypeDao.getAllType      : <==      Total: 6
+2020-10-15 11:42:10.498 DEBUG 11952 --- [http-nio-8080-exec-8] com.mdx.blog.dao.TagDao.getAllTag        : ==>  Preparing: select * from t_tag 
+2020-10-15 11:42:10.498 DEBUG 11952 --- [http-nio-8080-exec-8] com.mdx.blog.dao.TagDao.getAllTag        : ==> Parameters: 
+2020-10-15 11:42:10.499 DEBUG 11952 --- [http-nio-8080-exec-8] com.mdx.blog.dao.TagDao.getAllTag        : <==      Total: 4
+2020-10-15 11:42:12.860 DEBUG 11952 --- [http-nio-8080-exec-9] d.B.searchByTitleOrTypeOrRecommend_COUNT : ==>  Preparing: SELECT count(0) FROM t_blog b JOIN t_type t ON b.type_id = t.id WHERE b.type_id = ? AND b.title LIKE ? 
+2020-10-15 11:42:12.861 DEBUG 11952 --- [http-nio-8080-exec-9] d.B.searchByTitleOrTypeOrRecommend_COUNT : ==> Parameters: 3(Long), %%(String)
+2020-10-15 11:42:12.862 DEBUG 11952 --- [http-nio-8080-exec-9] d.B.searchByTitleOrTypeOrRecommend_COUNT : <==      Total: 1
+2020-10-15 11:42:12.862 DEBUG 11952 --- [http-nio-8080-exec-9] c.m.b.d.B.searchByTitleOrTypeOrRecommend : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.type_id,t.id,t.name from t_blog b join t_type t on b.type_id = t.id WHERE b.type_id = ? and b.title like ? LIMIT ? 
+2020-10-15 11:42:12.862 DEBUG 11952 --- [http-nio-8080-exec-9] c.m.b.d.B.searchByTitleOrTypeOrRecommend : ==> Parameters: 3(Long), %%(String), 6(Integer)
+2020-10-15 11:42:12.864 DEBUG 11952 --- [http-nio-8080-exec-9] c.m.b.d.B.searchByTitleOrTypeOrRecommend : <==      Total: 2
+2020-10-15 11:42:12.864 DEBUG 11952 --- [http-nio-8080-exec-9] com.mdx.blog.dao.TypeDao.getAllType      : ==>  Preparing: select * from t_type 
+2020-10-15 11:42:12.865 DEBUG 11952 --- [http-nio-8080-exec-9] com.mdx.blog.dao.TypeDao.getAllType      : ==> Parameters: 
+2020-10-15 11:42:12.867 DEBUG 11952 --- [http-nio-8080-exec-9] com.mdx.blog.dao.TypeDao.getAllType      : <==      Total: 6
+2020-10-15 11:42:12.869 DEBUG 11952 --- [http-nio-8080-exec-9] com.mdx.blog.dao.TagDao.getAllTag        : ==>  Preparing: select * from t_tag 
+2020-10-15 11:42:12.869 DEBUG 11952 --- [http-nio-8080-exec-9] com.mdx.blog.dao.TagDao.getAllTag        : ==> Parameters: 
+2020-10-15 11:42:12.870 DEBUG 11952 --- [http-nio-8080-exec-9] com.mdx.blog.dao.TagDao.getAllTag        : <==      Total: 4
+2020-10-15 11:42:16.743 DEBUG 11952 --- [http-nio-8080-exec-10] d.B.searchByTitleOrTypeOrRecommend_COUNT : ==>  Preparing: SELECT count(0) FROM t_blog b JOIN t_type t ON b.type_id = t.id WHERE b.type_id = ? AND b.title LIKE ? 
+2020-10-15 11:42:16.744 DEBUG 11952 --- [http-nio-8080-exec-10] d.B.searchByTitleOrTypeOrRecommend_COUNT : ==> Parameters: 5(Long), %%(String)
+2020-10-15 11:42:16.744 DEBUG 11952 --- [http-nio-8080-exec-10] d.B.searchByTitleOrTypeOrRecommend_COUNT : <==      Total: 1
+2020-10-15 11:42:16.745 DEBUG 11952 --- [http-nio-8080-exec-10] c.m.b.d.B.searchByTitleOrTypeOrRecommend : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.type_id,t.id,t.name from t_blog b join t_type t on b.type_id = t.id WHERE b.type_id = ? and b.title like ? LIMIT ? 
+2020-10-15 11:42:16.745 DEBUG 11952 --- [http-nio-8080-exec-10] c.m.b.d.B.searchByTitleOrTypeOrRecommend : ==> Parameters: 5(Long), %%(String), 6(Integer)
+2020-10-15 11:42:16.746 DEBUG 11952 --- [http-nio-8080-exec-10] c.m.b.d.B.searchByTitleOrTypeOrRecommend : <==      Total: 1
+2020-10-15 11:42:16.746 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TypeDao.getAllType      : ==>  Preparing: select * from t_type 
+2020-10-15 11:42:16.747 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TypeDao.getAllType      : ==> Parameters: 
+2020-10-15 11:42:16.747 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TypeDao.getAllType      : <==      Total: 6
+2020-10-15 11:42:16.749 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TagDao.getAllTag        : ==>  Preparing: select * from t_tag 
+2020-10-15 11:42:16.749 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TagDao.getAllTag        : ==> Parameters: 
+2020-10-15 11:42:16.749 DEBUG 11952 --- [http-nio-8080-exec-10] com.mdx.blog.dao.TagDao.getAllTag        : <==      Total: 4
+2020-10-15 11:42:20.914 DEBUG 11952 --- [http-nio-8080-exec-1] d.B.searchByTitleOrTypeOrRecommend_COUNT : ==>  Preparing: SELECT count(0) FROM t_blog b JOIN t_type t ON b.type_id = t.id WHERE b.title LIKE ? 
+2020-10-15 11:42:20.914 DEBUG 11952 --- [http-nio-8080-exec-1] d.B.searchByTitleOrTypeOrRecommend_COUNT : ==> Parameters: %%(String)
+2020-10-15 11:42:20.915 DEBUG 11952 --- [http-nio-8080-exec-1] d.B.searchByTitleOrTypeOrRecommend_COUNT : <==      Total: 1
+2020-10-15 11:42:20.916 DEBUG 11952 --- [http-nio-8080-exec-1] c.m.b.d.B.searchByTitleOrTypeOrRecommend : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.type_id,t.id,t.name from t_blog b join t_type t on b.type_id = t.id WHERE b.title like ? LIMIT ? 
+2020-10-15 11:42:20.916 DEBUG 11952 --- [http-nio-8080-exec-1] c.m.b.d.B.searchByTitleOrTypeOrRecommend : ==> Parameters: %%(String), 6(Integer)
+2020-10-15 11:42:20.919 DEBUG 11952 --- [http-nio-8080-exec-1] c.m.b.d.B.searchByTitleOrTypeOrRecommend : <==      Total: 5
+2020-10-15 11:42:20.920 DEBUG 11952 --- [http-nio-8080-exec-1] com.mdx.blog.dao.TypeDao.getAllType      : ==>  Preparing: select * from t_type 
+2020-10-15 11:42:20.920 DEBUG 11952 --- [http-nio-8080-exec-1] com.mdx.blog.dao.TypeDao.getAllType      : ==> Parameters: 
+2020-10-15 11:42:20.921 DEBUG 11952 --- [http-nio-8080-exec-1] com.mdx.blog.dao.TypeDao.getAllType      : <==      Total: 6
+2020-10-15 11:42:20.922 DEBUG 11952 --- [http-nio-8080-exec-1] com.mdx.blog.dao.TagDao.getAllTag        : ==>  Preparing: select * from t_tag 
+2020-10-15 11:42:20.922 DEBUG 11952 --- [http-nio-8080-exec-1] com.mdx.blog.dao.TagDao.getAllTag        : ==> Parameters: 
+2020-10-15 11:42:20.923 DEBUG 11952 --- [http-nio-8080-exec-1] com.mdx.blog.dao.TagDao.getAllTag        : <==      Total: 4

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mdx.blog.dao.BlogDao">
+
+    <!--查询所有博客-->
+    <resultMap id="blog" type="com.mdx.blog.queryvo.BlogQuery">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="recommend" column="recommend"/>
+        <result property="typeId" column="type_id"/>
+        <result property="published" column="published"/>
+        <association property="type" javaType="com.mdx.blog.pojo.Type">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
+    <select id="getAllBlogQuery" resultMap="blog">
+        select b.id,b.title,b.update_time,b.recommend,b.type_id,b.published,t.id,t.name from t_blog b left outer join
+        t_type t on b.type_id = t.id order by b.update_time desc
+    </select>
+
+    <select id="getAllBlogArchive" resultMap="blog">
+        select b.id,b.title,b.update_time,b.recommend,b.type_id,b.published,t.id,t.name from t_blog b left outer join
+        t_type t on b.type_id = t.id where published = 1 order by b.update_time desc
+    </select>
+
+    <!--根据id搜索博客-->
+    <select id="getBlog" resultType="com.mdx.blog.pojo.Blog">
+        select * from t_blog where id = #{id}
+    </select>
+
+    <!--新增博客内容-->
+    <insert id="saveBlog" parameterType="com.mdx.blog.pojo.Blog" useGeneratedKeys="true" keyProperty="id">
+        insert into t_blog (id,title, content, first_picture, flag,
+        views, appreciation, share_statement, commentabled,published,
+        recommend, create_time, update_time, type_id,tag_ids, user_id, description)
+        values (#{id},#{title},#{content},#{firstPicture},#{flag},#{views},#{appreciation},
+        #{shareStatement},#{commentabled},#{published},#{recommend},#{createTime},
+        #{updateTime},#{typeId},#{tagIds},#{userId},#{description})
+    </insert>
+
+    <!--更新博客-->
+    <update id="updateBlog" parameterType="com.mdx.blog.queryvo.ShowBlog">
+        update t_blog set published = #{published},flag = #{flag} ,
+        title = #{title}, content = #{content}, type_id = #{typeId}, tag_ids = #{tagIds},
+        first_picture = #{firstPicture} , description = #{description} , recommend = #{recommend} ,
+        share_statement = #{shareStatement}, appreciation = #{appreciation},
+        commentabled = #{commentabled} ,update_time = #{updateTime} where id = #{id}
+    </update>
+
+    <!--删除博客-->
+    <delete id="deleteBlog">
+        delete from t_blog where id = #{id}
+    </delete>
+
+
+    <!--动态查询博客列表-->
+    <select id="searchByTitleOrTypeOrRecommend" resultMap="blog">
+        <bind name="pattern" value="'%'+title+'%'"/>
+        select b.id,b.title,b.update_time,b.recommend,b.type_id,b.published,t.id,t.name from t_blog b join t_type t on b.type_id = t.id
+        <where>
+            <if test="typeId != null">
+                b.type_id = #{typeId}
+            </if>
+            <if test="recommend2 != null">
+                and b.recommend = #{recommend2}
+            </if>
+            <if test="title != null">
+                and b.title like #{pattern}
+            </if>
+        </where>
+    </select>
+
+    <!--当有博客添加标签时，新增博客于标签关联表中数据-->
+    <insert id="saveBlogAndTag" parameterType="com.mdx.blog.queryvo.BlogAndTag">
+        insert into t_blog_tags (tag_id,blog_id) values (#{tagId},#{blogId})
+    </insert>
+
+    <delete id="deleteBlogAndTag">
+        delete from t_blog_tags where blog_id = #{blogId}
+    </delete>
+
+    <!--文章访问自增-->
+    <update id="updateViews">
+        update t_blog b set b.views = b.views+1 where b.id = #{id}
+    </update>
+
+    <resultMap id="firstPageBlog" type="com.mdx.blog.queryvo.FirstPageBlog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="firstPicture" column="first_picture"/>
+        <result property="views" column="views"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="description" column="description"/>
+
+        <result property="typeName" column="name"/>
+
+        <result property="nickname" column="nickname"/>
+        <result property="avatar" column="avatar"/>
+    </resultMap>
+
+    <select id="getAllFirstPageBlog" resultMap="firstPageBlog">
+        select  b.id,b.title,b.first_picture, b.views,b.update_time,b.description,
+        t.name,
+        u.nickname, u.avatar
+        from t_blog b join t_type t on b.type_id = t.id
+        join t_user u on b.user_id = u.id
+        where  published = 1
+        order by b.update_time desc
+    </select>
+
+    <select id="getFirstPageBlogByTypeId" resultMap="firstPageBlog">
+        select  b.id,b.title,b.first_picture, b.views,b.update_time,b.description,
+        t.name,
+        u.nickname, u.avatar
+        from t_blog b right join t_type t on b.type_id = t.id
+        join t_user u on b.user_id = u.id
+        where b.type_id = #{typeId} and published = 1
+        order by b.update_time desc
+    </select>
+
+    <select id="getFirstPageBlogByTagId" resultMap="firstPageBlog">
+        select b.id,b.title,b.first_picture,b.views,b.update_time,b.description,t.name,u.nickname, u.avatar
+        from t_blog_tags bt
+        join blog.t_blog b on b.id = bt.blog_id
+		join t_user u on b.user_id = u.id
+        right join blog.t_tag t on t.id = bt.tag_id
+		where bt.tag_id = #{tagId} and published = 1
+		order by b.update_time desc
+    </select>
+
+    <select id="getAllRecommendBlog" resultType="com.mdx.blog.pojo.Blog">
+        select id,title,recommend from t_blog where recommend = 1 and published = 1
+    </select>
+
+    <select id="getSearchBlog" resultMap="firstPageBlog">
+        <bind name="pattern" value="'%' + query + '%'" />
+        select b.id,b.title,b.first_picture, b.views,b.update_time,b.description,
+        t.name ,
+        u.nickname, u.avatar
+        from blog.t_blog b, blog.t_type t,blog.t_user u
+        where b.type_id = t.id and  u.id = b.user_id and b.title like #{pattern} and published = 1
+
+        union
+
+        select b.id,b.title,b.first_picture, b.views,b.update_time,b.description,
+        t.name ,
+        u.nickname, u.avatar
+        from blog.t_blog b, blog.t_type t,blog.t_user u
+        where b.type_id = t.id and  u.id = b.user_id and b.content like  #{pattern} and published = 1
+
+
+    </select>
+
+
+    <resultMap id="detailedBlog" type="com.mdx.blog.queryvo.DetailedBlog">
+        <id property="id" column="bid"/>
+        <result property="firstPicture" column="first_picture"/>
+        <result property="flag" column="flag"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="views" column="views"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="commentabled" column="commentabled"/>
+        <result property="shareStatement" column="share_statement"/>
+        <result property="appreciation" column="appreciation"/>
+        <result property="nickname" column="nickname"/>
+        <result property="avatar" column="avatar"/>
+        <collection property="tags" ofType="com.mdx.blog.pojo.Tag">
+            <id property="id" column="tid"/>
+            <result property="name" column="name"/>
+        </collection>
+    </resultMap>
+    <!--查询id对应的博客的内容-->
+    <select id="getDetailedBlog" resultMap="detailedBlog">
+        select b.id bid,b.first_picture,b.flag,b.title,b.content,b.views,b.update_time,b.commentabled,b.share_statement,b.appreciation, u.nickname,u.avatar,
+        t.id tid ,t.name
+        from blog.t_blog b,blog.t_user u,blog.t_tag t,blog.t_blog_tags tb
+        where b.user_id = u.id and tb.blog_id = b.id and tb.tag_id = t.id and  b.id = #{id} and published = 1
+    </select>
+</mapper>
